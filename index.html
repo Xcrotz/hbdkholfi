@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Selamat Ulang Tahun, Kak Kholfi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,500&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#F6F2FB;      /* latar lavender sangat muda */
+  --wine:#E6DCF3;       /* latar lavender pastel */
+  --rose:#8A5FB5;       /* aksen ungu (teks kecil) */
+  --lav:#B58FD6;        /* lavender dekoratif */
+  --gold:#C99A8A;       /* rose gold */
+  --ivory:#43305F;      /* teks utama ungu tua */
+  --muted:#7C6A94;
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --sans:'Jost','Helvetica Neue',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);color:var(--ivory);line-height:1.7;
+  background:
+    radial-gradient(900px 500px at 15% -5%,rgba(181,143,214,.25),transparent 60%),
+    radial-gradient(800px 600px at 100% 40%,rgba(201,154,138,.18),transparent 60%),
+    linear-gradient(180deg,var(--night),var(--wine) 55%,var(--night));
+  background-attachment:fixed;min-height:100vh;overflow-x:hidden;
+}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+
+/* ===== Layar pembuka ===== */
+#gate{
+  position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:1.4rem;text-align:center;padding:2rem;
+  background:radial-gradient(circle at 50% 40%,#fff,var(--wine));
+  transition:opacity 1.2s ease,visibility 1.2s;
+}
+#gate.open{opacity:0;visibility:hidden}
+#gate .seal{
+  width:112px;height:106px;display:block;
+  filter:drop-shadow(0 8px 26px rgba(138,95,181,.45));
+  animation:beat 2.2s ease-in-out infinite;
+}
+@keyframes beat{0%,100%{transform:scale(1)}14%{transform:scale(1.09)}28%{transform:scale(1)}42%{transform:scale(1.06)}56%{transform:scale(1)}}
+#gate p{font:italic 400 1.35rem var(--serif);color:var(--rose)}
+.btn{
+  font:400 .95rem var(--sans);letter-spacing:.12em;color:#fff;
+  background:var(--rose);border:0;border-radius:999px;padding:.85rem 2.2rem;cursor:pointer;
+  transition:transform .2s,box-shadow .2s;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(138,95,181,.35)}
+
+/* ===== Konten ===== */
+main{max-width:980px;margin:0 auto;padding:0 1.4rem 5rem}
+.hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-top:3rem}
+.hero h1{
+  font:italic 500 clamp(2.2rem,8vw,4.8rem)/1.15 var(--serif);margin:0;
+  color:var(--ivory);text-align:center;text-wrap:balance;letter-spacing:.01em;
+}
+.age{
+  font:600 clamp(9rem,34vw,19rem)/.9 var(--serif);margin:.4rem 0;
+  background:linear-gradient(180deg,#CFAEEC 0%,#A67BC9 50%,var(--gold) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 10px 36px rgba(138,95,181,.3));
+}
+.hero .tag{font-weight:300;letter-spacing:.14em;color:var(--muted);font-size:.95rem}
+
+/* ===== Foto (bingkai lengkung) ===== */
+.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin:2rem 0 5rem}
+.heart{
+  filter:drop-shadow(1.5px 0 0 var(--gold)) drop-shadow(-1.5px 0 0 var(--gold))
+         drop-shadow(0 1.5px 0 var(--gold)) drop-shadow(0 -1.5px 0 var(--gold))
+         drop-shadow(0 18px 26px rgba(90,60,130,.28));
+}
+.heart:nth-child(2){transform:translateY(-1.4rem)}
+.frame{
+  position:relative;aspect-ratio:1/1;overflow:hidden;
+  clip-path:url(#heartClip);
+  background:rgba(255,255,255,.7);
+}
+.frame img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ===== Kartu ucapan ===== */
+.card{
+  position:relative;max-width:680px;margin:0 auto;padding:3.2rem clamp(1.6rem,6vw,3.6rem);text-align:center;
+  background:linear-gradient(160deg,rgba(255,255,255,.88),rgba(255,255,255,.55));
+  border:1px solid rgba(181,143,214,.55);border-radius:22px;
+  box-shadow:0 30px 70px rgba(90,60,130,.18);
+}
+.card::before{content:"";position:absolute;inset:9px;border:1px solid rgba(201,154,138,.4);border-radius:15px;pointer-events:none}
+.card h2{font:italic 500 clamp(1.9rem,6vw,2.7rem)/1.2 var(--serif);color:var(--rose);margin-bottom:1.6rem}
+.card p{font:400 1.32rem/1.8 var(--serif);color:var(--ivory);margin-bottom:1.2rem}
+.card p.last{margin-bottom:0;font-style:italic;color:var(--rose)}
+.orn{display:block;margin:0 auto 1.8rem;width:120px;height:14px}
+footer{text-align:center;margin-top:3rem;font:italic 400 1.2rem var(--serif);color:var(--muted)}
+
+/* ===== Pemutar musik ===== */
+#music{
+  position:fixed;right:1rem;bottom:1rem;z-index:40;display:flex;align-items:center;gap:.5rem;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border:1px solid rgba(181,143,214,.5);
+  border-radius:999px;padding:.4rem .5rem;
+}
+#music button{
+  width:42px;height:42px;border-radius:50%;border:0;cursor:pointer;background:var(--rose);color:#fff;font-size:1.05rem;
+}
+#music label{font-size:.78rem;letter-spacing:.06em;color:var(--muted);cursor:pointer;padding:0 .7rem 0 .2rem}
+#music label:hover{color:var(--ivory)}
+#music input{display:none}
+
+/* Teks muncul kata demi kata */
+.w{opacity:0;filter:blur(4px);transition:opacity .8s ease,filter .8s ease}
+.w.on{opacity:1;filter:none}
+#replay{
+  display:block;margin:1.8rem auto 0;background:none;border:0;cursor:pointer;
+  font:italic 400 1.05rem var(--serif);color:var(--muted);opacity:0;pointer-events:none;transition:opacity 1s;
+}
+#replay.show{opacity:1;pointer-events:auto}
+#replay:hover{color:var(--rose)}
+
+/* Kelopak sakura berjatuhan */
+#petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:20}
+
+/* Satu momen: kartu muncul saat dibuka */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 1.4s ease .5s,transform 1.4s ease .5s}
+body.ready .reveal{opacity:1;transform:none}
+
+@media (max-width:640px){
+  .photos{grid-template-columns:1fr;max-width:300px;margin-inline:auto;gap:1rem}
+  .heart:nth-child(2){transform:none}
+}
+@media (prefers-reduced-motion:reduce){*:not(.w){transition:none!important}.reveal{opacity:1;transform:none}#gate .seal{animation:none}.w{filter:none;transition:opacity .5s ease}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><clipPath id="heartClip" clipPathUnits="objectBoundingBox"><path d="M0.5,0.95 C0.5,0.95 0.02,0.62 0.02,0.30 C0.02,0.12 0.15,0.03 0.28,0.03 C0.38,0.03 0.46,0.09 0.5,0.18 C0.54,0.09 0.62,0.03 0.72,0.03 C0.85,0.03 0.98,0.12 0.98,0.30 C0.98,0.59 0.5,0.95 0.5,0.95 Z"/></clipPath></defs></svg>
+
+<canvas id="petals" aria-hidden="true"></canvas>
+
+<!-- Layar pembuka -->
+<div id="gate">
+  <svg class="seal" viewBox="0 0 100 95" aria-hidden="true">
+    <defs><radialGradient id="hg" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#E3CFF5"/><stop offset=".55" stop-color="#B58FD6"/><stop offset="1" stop-color="#8A5FB5"/></radialGradient></defs>
+    <path d="M50,90 C50,90 2,59 2,30 C2,12 15,3 28,3 C38,3 46,9 50,18 C54,9 62,3 72,3 C85,3 98,12 98,30 C98,59 50,90 50,90Z" fill="url(#hg)" stroke="#C99A8A" stroke-width="1.5"/>
+  </svg>
+  <p>Looking for something, Kak Kholfi</p>
+  <button class="btn" id="openBtn">Open Card</button>
+</div>
+
+<main>
+  <section class="hero reveal">
+    <h1>SELAMAT ULANG TAHUN<br>KAK KHOLFI</h1>
+    <div class="age" aria-label="28 tahun">28 tahun</div>
+    <span class="tag">Satu usia lagi, satu cerita baru</span>
+  </section>
+
+  <!-- 3 kotak foto permanen -->
+  <section class="photos reveal" id="photos">
+    <div class="heart"><div class="frame"><img src="p.jpg" alt="Foto pertama"></div></div>
+    <div class="heart"><div class="frame"><img src="p1.jpg" alt="Foto kedua"></div></div>
+    <div class="heart"><div class="frame"><img src="p2.jpg" alt="Foto ketiga"></div></div>
+  </section>
+
+  <section class="card reveal">
+    <svg class="orn" viewBox="0 0 120 14" fill="none" stroke="#C99A8A" stroke-width="1"><path d="M2 7h44M74 7h44"/><path d="M60 1l5 6-5 6-5-6z" fill="#C99A8A"/></svg>
+    <p>Tambah satu usia lagi di tahun ini. Semoga kau sehat selalu, dan di tahun yang baru ini kamu bisa lebih bersenang-senang karena ini hari yang indah.</p>
+    <p>Terima kasih sudah melangkah sejauh ini. Masih banyak waktu untuk kejar angan-angan dan temukan bahagiamu.</p>
+    <p class="last">Semoga panjang umur, dan kamu selalu bisa merayakan sepenuhnya dirimu.</p>
+    <button id="replay" type="button">Baca lagi</button>
+  </section>
+  <footer class="reveal">salam hangat, dari seseorang yang peduli ✨</footer>
+</main>
+
+<audio id="audio" src="musik.mp3" preload="auto"></audio>
+<div id="music">
+  <button id="playBtn" aria-label="Putar atau jeda musik">♪</button>
+  <label for="musicFile">Ganti lagu</label>
+  <input type="file" id="musicFile" accept="audio/*">
+</div>
+
+<script>
+/* ---------- Musik ---------- */
+const audio = document.getElementById('audio');
+const playBtn = document.getElementById('playBtn');
+const START_AT = 0;        
+const HOLD_AFTER = 20000;  
+const FADE_MS = 5000;      
+let holdTimer = null, faded = false;
+if (START_AT) audio.addEventListener('loadedmetadata', () => { audio.currentTime = START_AT; }, { once: true });
+function fadeOut(ms) {
+  const v0 = audio.volume, t0 = performance.now();
+  (function step(t) {
+    const k = Math.min(1, (t - t0) / ms);
+    audio.volume = v0 * (1 - k);
+    if (audio.paused) { audio.volume = v0; return; }       
+    if (k < 1) requestAnimationFrame(step);
+    else { audio.pause(); audio.volume = v0; faded = true; }
+  })(t0);
+}
+const sync = () => playBtn.textContent = audio.paused ? '♪' : '❚❚';
+audio.addEventListener('play', sync); audio.addEventListener('pause', sync); audio.addEventListener('ended', sync);
+playBtn.addEventListener('click', () => audio.paused ? audio.play().catch(()=>{}) : audio.pause());
+document.getElementById('musicFile').addEventListener('change', e => {
+  const file = e.target.files[0]; if (!file) return;
+  audio.src = URL.createObjectURL(file); audio.play().catch(()=>{});
+});
+
+/* ---------- Teks berjalan kata demi kata ---------- */
+const card = document.querySelector('.card');
+const replay = document.getElementById('replay');
+const lines = card.querySelectorAll('h2, p');
+const words = [];
+lines.forEach(el => {
+  const parts = el.textContent.trim().split(/\s+/);
+  el.textContent = '';
+  parts.forEach((t, i) => {
+    const s = document.createElement('span');
+    s.className = 'w'; s.textContent = t;
+    el.appendChild(s);
+    if (i < parts.length - 1) el.appendChild(document.createTextNode(' '));
+    words.push({ s, last: i === parts.length - 1 });
+  });
+});
+let timer = null, started = false;
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function readCard() {
+  clearTimeout(timer); clearTimeout(holdTimer);
+  if (faded || audio.ended) { faded = false; audio.currentTime = START_AT; audio.play().catch(()=>{}); }
+  replay.classList.remove('show');
+  words.forEach(w => w.s.classList.remove('on'));
+  let i = 0;
+  (function next() {
+    if (i >= words.length) {
+      replay.classList.add('show');
+      holdTimer = setTimeout(() => { if (!audio.paused) fadeOut(FADE_MS); }, HOLD_AFTER);   
+      return;
+    }
+    const w = words[i++]; w.s.classList.add('on');
+    const t = w.s.textContent;
+    let wait = 230 + Math.min(t.length, 9) * 18;          
+    if (/[,;:]$/.test(t)) wait += 380;                     
+    if (/[.!?]$/.test(t)) wait += 700;                     
+    if (w.last) wait += 500;                               
+    timer = setTimeout(next, wait);
+  })();
+}
+
+{
+  const io = new IntersectionObserver(es => {
+    if (es[0].isIntersecting && !started && document.body.classList.contains('ready')) {
+      started = true; io.disconnect(); setTimeout(readCard, 900);
+    }
+  }, { threshold: .15 });
+  io.observe(card);
+  document.getElementById('openBtn').addEventListener('click', () => {
+    setTimeout(() => {
+      const r = card.getBoundingClientRect();
+      if (!started && r.top < innerHeight * .55) { started = true; io.disconnect(); setTimeout(readCard, 900); }
+    }, 300);
+  });
+  replay.addEventListener('click', readCard);
+}
+
+/* ---------- Sakura berjatuhan ---------- */
+const cv = document.getElementById('petals');
+const cx = cv.getContext('2d');
+const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const tints = ['#F8C8D8','#F3B5CB','#FBE0E8','#F6BFD3','#E3CCF2'];
+let W = 0, H = 0, petals = [], running = false;
+
+function fit() {
+  const d = Math.min(devicePixelRatio || 1, 2);
+  W = innerWidth; H = innerHeight;
+  cv.width = W * d; cv.height = H * d;
+  cx.setTransform(d, 0, 0, d, 0, 0);
+}
+function spawn(first) {
+  const s = 7 + Math.random() * 9;
+  return {
+    x: Math.random() * W,
+    y: first ? -Math.random() * H * 1.1 - 20 : -20 - Math.random() * 60,   
+    s, vy: (0.55 + Math.random() * 0.9) * (calm ? .5 : 1),
+    sway: 0.6 + Math.random() * 1.1, ph: Math.random() * 6.28, sp: 0.01 + Math.random() * 0.015,
+    r: Math.random() * 6.28, vr: (Math.random() - .5) * 0.035,
+    fl: Math.random() * 6.28, vf: 0.025 + Math.random() * 0.03,
+    c: tints[(Math.random() * tints.length) | 0], a: 0.55 + Math.random() * 0.4
+  };
+}
+function drawPetal(p) {
+  const s = p.s;
+  cx.save();
+  cx.translate(p.x, p.y);
+  cx.rotate(p.r);
+  cx.scale(Math.abs(Math.cos(p.fl)) * 0.7 + 0.3, 1);     
+  cx.globalAlign = p.a;
+  cx.fillStyle = p.c;
+  cx.beginPath();
+  cx.moveTo(0, -s * .7);
+  cx.bezierCurveTo(s * .2, -s * 1.1, s * .9, -s * .9, s * .7, -s * .1);
+  cx.bezierCurveTo(s * .5, s * .6, s * .1, s * .9, 0, s);
+  cx.bezierCurveTo(-s * .1, s * .9, -s * .5, s * .6, -s * .7, -s * .1);
+  cx.bezierCurveTo(-s * .9, -s * .9, -s * .2, -s * 1.1, 0, -s * .7);
+  cx.fill();
+  cx.restore();
+}
+function tick() {
+  cx.clearRect(0, 0, W, H);
+  for (let i = 0; i < petals.length; i++) {
+    let p = petals[i];
+    p.ph += p.sp; p.r += p.vr; p.fl += p.vf;
+    p.y += p.vy;
+    p.x += Math.sin(p.ph) * p.sway * (calm ? .5 : 1) + 0.25;  
+    if (p.y > H + 30 || p.x > W + 40) petals[i] = p = spawn(false), p.x = Math.random() * W;
+    if (p.y > -20) drawPetal(p);
+  }
+  requestAnimationFrame(tick);
+}
+function startPetals() {
+  if (running) return; running = true;
+  fit();
+  const n = Math.round(Math.min(34, Math.max(16, W / 38)) * (calm ? .6 : 1));
+  petals = Array.from({ length: n }, () => spawn(true));
+  addEventListener('resize', fit);
+  requestAnimationFrame(tick);
+}
+
+/* ---------- Buka kartu ---------- */
+document.getElementById('openBtn').addEventListener('click', () => {
+  document.getElementById('gate').classList.add('open');
+  startPetals();
+  document.body.classList.add('ready');
+  audio.play().catch(()=>{});
+});
+</script>
+</body>
+</html>
